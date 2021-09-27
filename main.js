@@ -16,6 +16,9 @@ function validateInput(input1,input2,input3){
    return false;
 
 }
+function showMessage(message){
+   output.innerText = message;
+}
 
 
    if(firstInput.length>0 && secondInput.length>0 && thirdInput.length>0)
@@ -27,13 +30,24 @@ function validateInput(input1,input2,input3){
       {   
         var totalInitialPrice=input1 *input2;
         var totalCurrentPrice=input3 * input2;
-        if(totalInitialPrice>totalCurrentPrice)
+        if(totalInitialPrice>=totalCurrentPrice)
         { 
-
+      if(totalCurrentPrice===totalInitialPrice)
+      showMessage("No Pain No Gain, No Gain No Pain");
+      else
+      { 
+         var loss=totalInitialPrice-totalCurrentPrice;
+         var lossPercent=(loss/totalInitialPrice)*100;
+         lossPercent=lossPercent.toFixed(2);
+         showMessage(`Hey,You have lost ${loss} and the loss percent is ${lossPercent}%.😌`);
+      }
         }
         else 
         {   
-           
+           var gain=totalCurrentPrice-totalInitialPrice;
+           var gainPercent=(gain/totalInitialPrice)*100;
+           gainPercent=gainPercent.toFixed(2);
+           showMessage(`Hey,The profit is ${gain} and the profit percent is ${gainPercent}%.🎉`)
         }
       }
       else
